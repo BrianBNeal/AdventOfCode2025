@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace AdventOfCode2025.Common;
+﻿namespace AdventOfCode2025.Common;
 
 public record struct Rotation(char[] Raw) {
 	public readonly TurnDirection Direction => Raw[0] == 'L' ? TurnDirection.Left : TurnDirection.Right;

@@ -5,5 +5,7 @@ using System.Text;
 namespace AdventOfCode2025.Common;
 
 internal abstract class Problem {
-	public abstract int Solve();
+	public abstract string Title { get; }
+	public abstract int SolvePartOne();
+	public abstract int SolvePartTwo();
 }
