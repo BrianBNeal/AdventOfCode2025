@@ -5,9 +5,8 @@ namespace AdventOfCode2025;
 internal class DayFour : Problem
 {
     private readonly List<Position> positions;
-    private readonly int rowLength;
 
-    public DayFour(bool IsTest = false)
+    internal DayFour(bool IsTest = false)
     {
         Title = IsTest ? "Day 4 Test" : "Day 4 Actual";
 
@@ -25,45 +24,39 @@ internal class DayFour : Problem
             @.@.@@@.@.
             """.ToGrid().MapPositions()]
             : [.. File.ReadAllText("./Inputs/DayFour.txt").ToGrid().MapPositions()];
-
-        rowLength = positions.Count(p => p.Location.Row == 0);
     }
 
-    public override string Title { get; init; }
+    internal override string Title { get; init; }
 
-    public override string SolvePartOne()
+    internal override string SolvePartOne()
     {
+        var map = positions.ToDictionary(p => p.Location, p => p.Contents);
         return positions
-            .Count(pos => pos.IsPaper && pos.IsAccessible(positions))
+            .Count(pos => pos.IsPaper && pos.Location.IsAccessible(map))
             .ToString();
     }
 
-    public override string SolvePartTwo()
+    internal override string SolvePartTwo()
     {
+        var map = positions.ToDictionary(p => p.Location, p => p.Contents);
         var count = 0;
-
-        var fullMap = positions
-            .Select((p, index) => (index, p))
-            .ToDictionary(t => t.index, t => t.p);
-        var paperLocations = fullMap
-            .Where(p => p.Value.IsPaper)
-            .Select(kvp => (kvp.Key, kvp.Value))
-            .ToList();
 
         while (true)
         {
-            var accessiblePaper = paperLocations.Where(x => x.Value.IsAccessible(fullMap)).ToList();
+            var accessibleLocations = map
+                .Where(kvp => kvp.Value == DayFourConstants.PAPER && kvp.Key.IsAccessible(map))
+                .Select(kvp => kvp.Key)
+                .ToList();
 
-            if (accessiblePaper.Count == 0)
+            if (accessibleLocations.Count == 0)
                 break;
 
-            foreach ((int key, Position pos) item in accessiblePaper)
+            foreach (var location in accessibleLocations)
             {
-                fullMap[item.key] = fullMap[item.key] with { Contents = DayFourConstants.EMPTY };
-                paperLocations.Remove(item);
+                map[location] = DayFourConstants.EMPTY;
             }
 
-            count += accessiblePaper.Count;
+            count += accessibleLocations.Count;
         }
 
         return count.ToString();
@@ -81,10 +74,29 @@ internal static class DayFourConstants
 
 internal static class DayFourExtensions
 {
-    extension(IEnumerable<Position> positions)
+    extension(Point location)
     {
-        internal IEnumerable<Position> ClearAccesiblePaper() =>
-            positions.Where(pos => !(pos.IsPaper && pos.IsAccessible(positions)));
+        internal bool IsAccessible(Dictionary<Point, char> grid)
+        {
+            var paperCount = 0;
+            for (var row = location.Row - 1; row <= location.Row + 1; row++)
+            {
+                for (var col = location.Col - 1; col <= location.Col + 1; col++)
+                {
+                    if (row == location.Row && col == location.Col)
+                        continue;
+
+                    var adjacentPoint = new Point(row, col);
+                    if (grid.TryGetValue(adjacentPoint, out var contents) && contents == DayFourConstants.PAPER)
+                    {
+                        paperCount++;
+                        if (paperCount >= 4)
+                            return false;
+                    }
+                }
+            }
+            return true;
+        }
     }
 
     extension(string str)
@@ -104,17 +116,5 @@ internal static class DayFourExtensions
     {
         internal bool IsPaper =>
             pos.Contents is DayFourConstants.PAPER;
-
-        internal bool IsAccessible(Dictionary<int, Position> map) =>
-            pos.AdjacentPositions(map.Values.AsEnumerable()).Count(p => p.IsPaper) < 4;
-
-        internal bool IsAccessible(IEnumerable<Position> grid) =>
-            pos.AdjacentPositions(grid).Count(adj => adj.IsPaper) < 4;
-
-        internal IEnumerable<Position> AdjacentPositions(IEnumerable<Position> grid) =>
-            grid.Where(p =>
-                (p.Location.Row == pos.Location.Row - 1 || p.Location.Row == pos.Location.Row || p.Location.Row == pos.Location.Row + 1)
-                && (p.Location.Col == pos.Location.Col - 1 || p.Location.Col == pos.Location.Col || p.Location.Col == pos.Location.Col + 1)
-                && p.Location != pos.Location);
     }
 }

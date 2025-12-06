@@ -9,7 +9,7 @@ internal class DayTwo : Problem
     private const string REGEX_PATTERN = @"(^\d+)\1+$"; //YAY! figured it out without AI using www.regex101.com
     private readonly string input;
 
-    public DayTwo(bool IsTest = false)
+    internal DayTwo(bool IsTest = false)
     {
         Title = IsTest ? "Day 2 Test" : "Day 2 Actual";
 
@@ -18,9 +18,9 @@ internal class DayTwo : Problem
             : File.ReadAllText("./Inputs/DayTwo.txt");
     }
 
-    public override string Title { get; init; }
+    internal override string Title { get; init; }
 
-    public override string SolvePartOne() =>
+    internal override string SolvePartOne() =>
         input.Split(",")
             .Aggregate(0L, (acc, rangeString) =>
                 acc += rangeString
@@ -29,7 +29,7 @@ internal class DayTwo : Problem
                     .Sum())
             .ToString();
 
-    public override string SolvePartTwo() =>
+    internal override string SolvePartTwo() =>
         input.Split(",")
             .Aggregate(0L, (acc, rangeString) =>
                 acc += rangeString
@@ -39,18 +39,18 @@ internal class DayTwo : Problem
             .ToString();
 }
 
-public static class Day2Extensions
+internal static class Day2Extensions
 {
     // STRING EXTENSIONS
     extension(string str)
     {
-        public (string, string) SplitEvenly()
+        internal (string, string) SplitEvenly()
         {
             var halfLength = str.Length / 2;
             return (new string([.. str.Take(halfLength)]), new string([.. str.Skip(halfLength)]));
         }
 
-        public IEnumerable<long> AsRangeOfIds()
+        internal IEnumerable<long> AsRangeOfIds()
         {
             var bounds = str.Split('-');
             var start = long.Parse(bounds[0]);
@@ -66,19 +66,19 @@ public static class Day2Extensions
     // STRING[] EXTENSIONS
     extension(string[] arr)
     {
-        public bool AreEqual() => arr[0] == arr[1];
+        internal bool AreEqual() => arr[0] == arr[1];
     }
 
     // Tuple (STRING, STRING) EXTENSIONS
     extension((string first, string second) tuple)
     {
-        public bool AreEqual() => tuple.first == tuple.second;
+        internal bool AreEqual() => tuple.first == tuple.second;
     }
 
     // LONG EXTENSIONS
     extension(long val)
     {
-        public bool HasEqualHalves()
+        internal bool HasEqualHalves()
         {
             var strVal = val.ToString();
             return strVal.Length % 2 == 0
@@ -89,7 +89,7 @@ public static class Day2Extensions
     // IENUMERABLE<LONG> EXTENSIONS
     extension(IEnumerable<long> vals)
     {
-        public IEnumerable<long> WithEqualHalves()
+        internal IEnumerable<long> WithEqualHalves()
         {
             return vals.Where(val => val.HasEqualHalves());
         }

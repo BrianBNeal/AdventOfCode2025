@@ -11,7 +11,7 @@ internal class DayOne : Problem
 
     private readonly Rotation[] moves;
 
-    public DayOne(bool IsTest = false)
+    internal DayOne(bool IsTest = false)
     {
         Title = IsTest ? "Day 1 Test" : "Day 1 Actual";
 
@@ -33,9 +33,9 @@ internal class DayOne : Problem
             : [.. File.ReadAllLines("./Inputs/DayOne.txt").Where(x => !string.IsNullOrWhiteSpace(x)).Select(s => new Rotation([.. s]))];
     }
 
-    public override string Title { get; init; }
+    internal override string Title { get; init; }
 
-    public override string SolvePartOne()
+    internal override string SolvePartOne()
     {
         int position = STARTING_POSITION;
         return moves
@@ -67,7 +67,7 @@ internal class DayOne : Problem
             }).ToString();
     }
 
-    public override string SolvePartTwo()
+    internal override string SolvePartTwo()
     {
         int position = STARTING_POSITION;
         return moves.Aggregate(0, (timesPointingAtZero, current) =>
@@ -113,4 +113,16 @@ internal class DayOne : Problem
             return timesPointingAtZero;
         }).ToString();
     }
+}
+
+internal record struct Rotation(char[] Raw)
+{
+    internal readonly TurnDirection Direction => Raw[0] == 'L' ? TurnDirection.Left : TurnDirection.Right;
+    internal readonly int Distance => int.Parse(Raw.AsSpan()[1..]);
+}
+
+internal enum TurnDirection
+{
+    Left,
+    Right
 }

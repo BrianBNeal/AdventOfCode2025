@@ -2,9 +2,9 @@
 
 internal abstract class Problem
 {
-    public abstract string Title { get; init; }
-    public abstract string SolvePartOne();
-    public abstract string SolvePartTwo();
+    internal abstract string Title { get; init; }
+    internal abstract string SolvePartOne();
+    internal abstract string SolvePartTwo();
 
     public override string ToString()
     {

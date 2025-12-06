@@ -6,7 +6,7 @@ internal class DayThree : Problem
 {
     private readonly string input;
 
-    public DayThree(bool IsTest = false)
+    internal DayThree(bool IsTest = false)
     {
         Title = IsTest ? "Day 3 Test" : "Day 3 Actual";
 
@@ -20,9 +20,9 @@ internal class DayThree : Problem
             : File.ReadAllText("./Inputs/DayThree.txt");
     }
 
-    public override string Title { get; init; }
+    internal override string Title { get; init; }
 
-    public override string SolvePartOne() =>
+    internal override string SolvePartOne() =>
         input.Split(Environment.NewLine)
             .Select(line => new Bank([.. line.Select((c, idx) => new Battery(idx, c - '0'))]))
             .ToArray()
@@ -30,7 +30,7 @@ internal class DayThree : Problem
             .Sum()
             .ToString();
 
-    public override string SolvePartTwo() =>
+    internal override string SolvePartTwo() =>
         input.Split(Environment.NewLine)
             .Select(line => new Bank([.. line.Select((c, idx) => new Battery(idx, c - '0'))]))
             .ToArray()
@@ -39,11 +39,11 @@ internal class DayThree : Problem
             .ToString();
 
 }
-public record Battery(int Index, int Joltage);
+internal record Battery(int Index, int Joltage);
 
-public record Bank(Battery[] Batteries)
+internal record Bank(Battery[] Batteries)
 {
-    public long FindLargestJoltageOfSize(int size)
+    internal long FindLargestJoltageOfSize(int size)
     {
         int previousJoltageIndex = -1;
         string joltages = "";
