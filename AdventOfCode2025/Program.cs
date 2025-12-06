@@ -6,7 +6,7 @@ List<Problem> problems = [
     new DayOne(useTestData), new DayOne(),
     new DayTwo(useTestData), new DayTwo(),
     new DayThree(useTestData), new DayThree(),
-	//new DayFour(useTestData), new DayFour(),
+    new DayFour(useTestData), new DayFour(),
 	//new DayFive(useTestData), new DayFive(),
 	//new DaySix(useTestData), new DaySix(),
 	//new DaySeven(useTestData), new DaySeven(),
