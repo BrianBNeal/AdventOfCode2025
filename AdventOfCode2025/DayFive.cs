@@ -52,7 +52,7 @@ internal class DayFive : Problem
             .ThenBy(r => r.upper)
             .ToArray()
             .Merge()
-            .Sum(range => range.upper - range.lower + 1) //range 3-5 is 3,4,5 so upper-lower+1 = count
+            .Sum(range => range.upper - range.lower + 1) //range 3-5 = [3,4,5] so upper-lower+1 = count
             .ToString();
     }
 }
