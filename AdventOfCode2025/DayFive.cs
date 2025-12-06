@@ -43,7 +43,17 @@ internal class DayFive : Problem
 
     internal override string SolvePartTwo()
     {
-        return "NOT IMPLEMENTED";
+        return input
+            .Split(Environment.NewLine + Environment.NewLine)
+            .First()
+            .Split(Environment.NewLine)
+            .Select(line => line.ToIdRange())
+            .OrderBy(r => r.lower)
+            .ThenBy(r => r.upper)
+            .ToArray()
+            .Merge()
+            .Sum(range => range.upper - range.lower + 1) //range 3-5 is 3,4,5 so upper-lower+1 = count
+            .ToString();
     }
 }
 
@@ -51,6 +61,37 @@ internal record IdRange(long lower, long upper);
 
 internal static class DayFiveExtensions
 {
+    extension(IdRange[] ranges)
+    {
+        internal IEnumerable<IdRange> Merge()
+        {
+            List<IdRange> retVal = new();
+            for (int i = 0; i < ranges.Length; i++)
+            {
+                //always add last one, nothing to compare it to
+                if (i == ranges.Length - 1)
+                {
+                    retVal.Add(ranges[i]);
+                    break;
+                }
+
+                var (current, next) = (ranges[i], ranges[i + 1]);
+                if (next.lower > current.upper)
+                {
+                    //no overlap, keep it
+                    retVal.Add(current);
+                }
+                else
+                {
+                    //merge and set as next value in array for next compare
+                    var merged = new IdRange(Math.Min(current.lower, next.lower), Math.Max(current.upper, next.upper));
+                    ranges[i + 1] = merged;
+                }
+            }
+            return retVal;
+        }
+    }
+
     extension(string line)
     {
         internal IdRange ToIdRange()
