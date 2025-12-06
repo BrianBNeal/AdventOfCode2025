@@ -4,7 +4,7 @@ using AdventOfCode2025.Common;
 bool useTestData = true;
 List<Problem> problems = [
 	new DayOne(useTestData), new DayOne(),
-	//new DayTwo(useTestData), new DayTwo(),
+	new DayTwo(useTestData), //new DayTwo(),
 	//new DayThree(useTestData), new DayThree(),
 	//new DayFour(useTestData), new DayFour(),
 	//new DayFive(useTestData), new DayFive(),

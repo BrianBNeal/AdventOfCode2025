@@ -6,6 +6,6 @@ namespace AdventOfCode2025.Common;
 
 internal abstract class Problem {
 	public abstract string Title { get; }
-	public abstract int SolvePartOne();
-	public abstract int SolvePartTwo();
+	public abstract string SolvePartOne();
+	public abstract string SolvePartTwo();
 }

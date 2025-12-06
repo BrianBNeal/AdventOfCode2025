@@ -31,7 +31,7 @@ internal class DayOne : Problem {
 
 	public override string Title => "Day 1";
 
-	public override int SolvePartOne() {
+	public override string SolvePartOne() {
 		int position = STARTING_POSITION;
 		return moves
 			.Aggregate(0, (timesLandingOnZero, current) => {
@@ -54,10 +54,10 @@ internal class DayOne : Problem {
 				}
 
 				return timesLandingOnZero;
-			});
+			}).ToString();
 	}
 
-	public override int SolvePartTwo() {//6223
+	public override string SolvePartTwo() {//6223
 		int position = STARTING_POSITION;
 		return moves.Aggregate(0, (timesPointingAtZero, current) => {
 			int distanceFromZero = position == 0
@@ -92,6 +92,6 @@ internal class DayOne : Problem {
 			
 			position = newPosition;
 			return timesPointingAtZero;
-		});
+		}).ToString();
 	}
 }
