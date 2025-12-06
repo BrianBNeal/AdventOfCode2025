@@ -3,8 +3,8 @@ using AdventOfCode2025.Common;
 
 bool useTestData = true;
 List<Problem> problems = [
-	new DayOne(useTestData), new DayOne(),
-	new DayTwo(useTestData), //new DayTwo(),
+    new DayOne(useTestData), new DayOne(),
+    new DayTwo(useTestData), new DayTwo(),
 	//new DayThree(useTestData), new DayThree(),
 	//new DayFour(useTestData), new DayFour(),
 	//new DayFive(useTestData), new DayFive(),
@@ -17,7 +17,8 @@ List<Problem> problems = [
 	//new DayTwelve(useTestData), new DayTwelve(),
 	];
 
-foreach (var problem in problems) {
-	Console.WriteLine($"{problem.Title} Part One: {problem.SolvePartOne()}");
-	Console.WriteLine($"{problem.Title} Part Two: {problem.SolvePartTwo()}");
+foreach (var problem in problems)
+{
+    Console.WriteLine($"{problem.Title} Part One: {problem.SolvePartOne()}");
+    Console.WriteLine($"{problem.Title} Part Two: {problem.SolvePartTwo()}");
 }
