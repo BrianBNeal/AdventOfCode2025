@@ -10,11 +10,10 @@ internal class DayOne : Problem
     private const int STARTING_POSITION = 50;
 
     private readonly Rotation[] moves;
-    private readonly string title;
 
     public DayOne(bool IsTest = false)
     {
-        title = IsTest ? "Day 1 Test" : "Day 1 Actual";
+        Title = IsTest ? "Day 1 Test" : "Day 1 Actual";
 
         moves = IsTest
             ? [.. """
@@ -34,7 +33,7 @@ internal class DayOne : Problem
             : [.. File.ReadAllLines("./Inputs/DayOne.txt").Where(x => !string.IsNullOrWhiteSpace(x)).Select(s => new Rotation([.. s]))];
     }
 
-    public override string Title => title;
+    public override string Title { get; init; }
 
     public override string SolvePartOne()
     {

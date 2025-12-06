@@ -7,20 +7,18 @@ internal class DayTwo : Problem
 {
     //private const string REGEX_PATTERN = @"(\d+)\1"; //matches to 100, but shouldn't
     private const string REGEX_PATTERN = @"(^\d+)\1+$"; //YAY! figured it out without AI using www.regex101.com
-
     private readonly string input;
-    private readonly string title;
 
     public DayTwo(bool IsTest = false)
     {
-        title = IsTest ? "Day 2 Test" : "Day 2 Actual";
+        Title = IsTest ? "Day 2 Test" : "Day 2 Actual";
 
         input = IsTest
             ? "11-22,95-115,998-1012,1188511880-1188511890,222220-222224,1698522-1698528,446443-446449,38593856-38593862,565653-565659,824824821-824824827,2121212118-2121212124"
             : File.ReadAllText("./Inputs/DayTwo.txt");
     }
 
-    public override string Title => title;
+    public override string Title { get; init; }
 
     public override string SolvePartOne() =>
         input.Split(",")

@@ -2,7 +2,7 @@
 
 internal abstract class Problem
 {
-    public abstract string Title { get; }
+    public abstract string Title { get; init; }
     public abstract string SolvePartOne();
     public abstract string SolvePartTwo();
 

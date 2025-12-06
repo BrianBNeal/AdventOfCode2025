@@ -3,18 +3,18 @@ using AdventOfCode2025.Common;
 
 bool useTestData = true;
 List<Problem> problems = [
-    new DayOne(useTestData), new DayOne(),
-    new DayTwo(useTestData), new DayTwo(),
-    new DayThree(useTestData), new DayThree(),
-    new DayFour(useTestData), new DayFour(),
-	//new DayFive(useTestData), new DayFive(),
-	//new DaySix(useTestData), new DaySix(),
-	//new DaySeven(useTestData), new DaySeven(),
-	//new DayEight(useTestData), new DayEight(),
-	//new DayNine(useTestData), new DayNine(),
-	//new DayTen(useTestData), new DayTen(),
-	//new DayEleven(useTestData), new DayEleven(),
-	//new DayTwelve(useTestData), new DayTwelve(),
+    new DayOne(useTestData), new DayOne(),        /* 0:01 */
+    new DayTwo(useTestData), new DayTwo(),        /* 0:03 */
+    new DayThree(useTestData), new DayThree(),    /* 0:01 */
+    new DayFour(useTestData), new DayFour(),      /* 3:47 */
+	//new DayFive(useTestData), new DayFive(),      /* 0:00 */
+	//new DaySix(useTestData), new DaySix(),        /* 0:00 */
+	//new DaySeven(useTestData), new DaySeven(),    /* 0:00 */
+	//new DayEight(useTestData), new DayEight(),    /* 0:00 */
+	//new DayNine(useTestData), new DayNine(),      /* 0:00 */
+	//new DayTen(useTestData), new DayTen(),        /* 0:00 */
+	//new DayEleven(useTestData), new DayEleven(),  /* 0:00 */
+	//new DayTwelve(useTestData), new DayTwelve(),  /* 0:00 */
 	];
 
 foreach (var problem in problems)

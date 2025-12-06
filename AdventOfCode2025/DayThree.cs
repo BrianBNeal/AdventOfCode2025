@@ -5,11 +5,10 @@ namespace AdventOfCode2025;
 internal class DayThree : Problem
 {
     private readonly string input;
-    private readonly string title;
 
     public DayThree(bool IsTest = false)
     {
-        title = IsTest ? "Day 3 Test" : "Day 3 Actual";
+        Title = IsTest ? "Day 3 Test" : "Day 3 Actual";
 
         input = IsTest
             ? """
@@ -21,7 +20,7 @@ internal class DayThree : Problem
             : File.ReadAllText("./Inputs/DayThree.txt");
     }
 
-    public override string Title => title;
+    public override string Title { get; init; }
 
     public override string SolvePartOne() =>
         input.Split(Environment.NewLine)
