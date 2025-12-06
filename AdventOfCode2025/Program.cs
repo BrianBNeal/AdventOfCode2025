@@ -5,7 +5,7 @@ bool useTestData = true;
 List<Problem> problems = [
     new DayOne(useTestData), new DayOne(),
     new DayTwo(useTestData), new DayTwo(),
-	//new DayThree(useTestData), new DayThree(),
+    new DayThree(useTestData), new DayThree(),
 	//new DayFour(useTestData), new DayFour(),
 	//new DayFive(useTestData), new DayFive(),
 	//new DaySix(useTestData), new DaySix(),
@@ -19,6 +19,5 @@ List<Problem> problems = [
 
 foreach (var problem in problems)
 {
-    Console.WriteLine($"{problem.Title} Part One: {problem.SolvePartOne()}");
-    Console.WriteLine($"{problem.Title} Part Two: {problem.SolvePartTwo()}");
+    Console.WriteLine(problem);
 }
