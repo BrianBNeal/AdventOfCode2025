@@ -63,7 +63,6 @@ internal class DayFour : Problem
     }
 }
 
-internal record Point(int Row, int Col);
 internal record Position(Point Location, char Contents);
 
 internal static class DayFourConstants
