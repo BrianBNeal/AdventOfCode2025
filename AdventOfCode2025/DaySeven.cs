@@ -39,12 +39,6 @@ internal class DaySeven : Problem
     internal const char SPLITTER = '^';
     internal override string SolvePartOne()
     {
-        //find S
-        //extend
-        //find splits in next line(only the ones with a beam above)
-        //split(count)
-        //extend (always a fully blank line after a split line)
-        //find next splits, etc
         var lines = input.Split(Environment.NewLine);
         int splitCount = 0;
         List<int> currentBeamColumns = [lines[0].IndexOf('S')]; //first beam is always row 1 under S
@@ -76,7 +70,41 @@ internal class DaySeven : Problem
 
     internal override string SolvePartTwo()
     {
-        return "NOT IMPLEMENTED";
+        ////each space has a value of all the beams that enters it
+        ////a beam's value in a space is equal to the number of ways to get there
+        ////answer is the value of the bottom row spaces with beams
+        ////another way to think of it is each splitter adds the incoming value to the left and right
+        ////probably should look up binary tree calculations and this would be easier lol
+        var lines = input.Split(Environment.NewLine);
+        var length = lines[0].Length;
+        var grid = new long[lines.Length][];
+        grid[0] = new long[length];
+        grid[0][lines[0].IndexOf('S')] = 1;
+
+        for (int row = 1; row < lines.Length; row++)
+        {
+            grid[row] = new long[length];
+            for (int col = 0; col < length; col++)
+            {
+                var incomingStrength = grid[row - 1][col];
+                if (incomingStrength == 0)
+                { continue; }
+
+                if (lines[row][col] == SPLITTER)
+                {
+                    grid[row][col - 1] += incomingStrength;
+                    grid[row][col + 1] += incomingStrength;
+                }
+                else
+                {
+                    grid[row][col] += incomingStrength;
+                }
+            }
+        }
+
+        return grid[^1].Sum().ToString();
     }
 }
+
+internal record QuantumBeam(int Col, int Strength);
 
