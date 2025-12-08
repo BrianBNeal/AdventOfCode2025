@@ -14,7 +14,8 @@ internal class DayOne : Problem
     internal DayOne(bool IsTest = false)
     {
         Title = IsTest ? "Day 1 Test" : "Day 1 Actual";
-
+        var rawPath = "./Inputs/DayOne.txt";
+        var filePath = File.Exists(rawPath) ? rawPath : "./Inputs/DayTEMPLATE.txt";
         moves = IsTest
             ? [.. """
 			  L68
@@ -30,7 +31,7 @@ internal class DayOne : Problem
 			"""
                 .Split(Environment.NewLine, StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries)
                 .Select(s => new Rotation([.. s]))]
-            : [.. File.ReadAllLines("./Inputs/DayOne.txt").Where(x => !string.IsNullOrWhiteSpace(x)).Select(s => new Rotation([.. s]))];
+            : [.. File.ReadAllLines(filePath).Where(x => !string.IsNullOrWhiteSpace(x)).Select(s => new Rotation([.. s]))];
     }
 
     internal override string Title { get; init; }

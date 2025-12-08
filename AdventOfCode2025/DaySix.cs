@@ -11,7 +11,8 @@ internal class DaySix : Problem
     internal DaySix(bool IsTest = false)
     {
         Title = IsTest ? "Day 6 Test" : "Day 6 Actual";
-
+        var rawPath = "./Inputs/DaySix.txt";
+        var filePath = File.Exists(rawPath) ? rawPath : "./Inputs/DayTEMPLATE.txt";
         input = IsTest
             ? """
             123 328  51 64 
@@ -19,7 +20,7 @@ internal class DaySix : Problem
               6 98  215 314
             *   +   *   +  
             """
-            : File.ReadAllText("./Inputs/DaySix.txt");
+            : File.ReadAllText(filePath);
     }
 
     internal override string Title { get; init; }

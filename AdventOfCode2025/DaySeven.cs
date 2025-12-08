@@ -11,7 +11,8 @@ internal class DaySeven : Problem
     internal DaySeven(bool IsTest = false)
     {
         Title = IsTest ? "Day 7 Test" : "Day 7 Actual";
-
+        var rawPath = "./Inputs/DaySeven.txt";
+        var filePath = File.Exists(rawPath) ? rawPath : "./Inputs/DayTEMPLATE.txt";
         input = IsTest
             ? """
             .......S.......
@@ -31,7 +32,7 @@ internal class DaySeven : Problem
             .^.^.^.^.^...^.
             ...............
             """
-            : File.ReadAllText("./Inputs/DaySeven.txt");
+            : File.ReadAllText(filePath);
     }
 
     internal override string Title { get; init; }

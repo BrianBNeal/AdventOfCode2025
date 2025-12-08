@@ -9,7 +9,8 @@ internal class DayFour : Problem
     internal DayFour(bool IsTest = false)
     {
         Title = IsTest ? "Day 4 Test" : "Day 4 Actual";
-
+        var rawPath = "./Inputs/DayFour.txt";
+        var filePath = File.Exists(rawPath) ? rawPath : "./Inputs/DayTEMPLATE.txt";
         positions = IsTest
             ? [.. """
             ..@@.@@@@.
@@ -23,7 +24,7 @@ internal class DayFour : Problem
             .@@@@@@@@.
             @.@.@@@.@.
             """.ToGrid().MapPositions()]
-            : [.. File.ReadAllText("./Inputs/DayFour.txt").ToGrid().MapPositions()];
+            : [.. File.ReadAllText(filePath).ToGrid().MapPositions()];
     }
 
     internal override string Title { get; init; }

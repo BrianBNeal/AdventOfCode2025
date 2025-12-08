@@ -11,12 +11,13 @@ internal class TEMPLATE : Problem
     internal TEMPLATE(bool IsTest = false)
     {
         Title = IsTest ? "Day TEMPLATE Test" : "Day TEMPLATE Actual";
-
+        var rawPath = "./Inputs/DayTEMPLATE.txt";
+        var filePath = File.Exists(rawPath) ? rawPath : "./Inputs/DayTEMPLATE.txt";
         input = IsTest
             ? """
             
             """
-            : File.ReadAllText("./Inputs/DayTEMPLATE.txt");
+            : File.ReadAllText(filePath);
     }
 
     internal override string Title { get; init; }

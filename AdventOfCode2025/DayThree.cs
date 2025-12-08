@@ -9,7 +9,8 @@ internal class DayThree : Problem
     internal DayThree(bool IsTest = false)
     {
         Title = IsTest ? "Day 3 Test" : "Day 3 Actual";
-
+        var rawPath = "./Inputs/DayThree.txt";
+        var filePath = File.Exists(rawPath) ? rawPath : "./Inputs/DayTEMPLATE.txt";
         input = IsTest
             ? """
             987654321111111
@@ -17,7 +18,7 @@ internal class DayThree : Problem
             234234234234278
             818181911112111
             """
-            : File.ReadAllText("./Inputs/DayThree.txt");
+            : File.ReadAllText(filePath);
     }
 
     internal override string Title { get; init; }

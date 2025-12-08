@@ -12,10 +12,11 @@ internal class DayTwo : Problem
     internal DayTwo(bool IsTest = false)
     {
         Title = IsTest ? "Day 2 Test" : "Day 2 Actual";
-
+        var rawPath = "./Inputs/DayTwo.txt";
+        var filePath = File.Exists(rawPath) ? rawPath : "./Inputs/DayTEMPLATE.txt";
         input = IsTest
             ? "11-22,95-115,998-1012,1188511880-1188511890,222220-222224,1698522-1698528,446443-446449,38593856-38593862,565653-565659,824824821-824824827,2121212118-2121212124"
-            : File.ReadAllText("./Inputs/DayTwo.txt");
+            : File.ReadAllText(filePath);
     }
 
     internal override string Title { get; init; }
