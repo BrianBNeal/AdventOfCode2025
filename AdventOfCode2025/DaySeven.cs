@@ -70,11 +70,12 @@ internal class DaySeven : Problem
 
     internal override string SolvePartTwo()
     {
-        ////each space has a value of all the beams that enters it
-        ////a beam's value in a space is equal to the number of ways to get there
-        ////answer is the value of the bottom row spaces with beams
-        ////another way to think of it is each splitter adds the incoming value to the left and right
-        ////probably should look up binary tree calculations and this would be easier lol
+        //each space has a value of all the beams that enter it
+        //a beam's value in a space is equal to the number of ways to get there
+        //answer is the sum of bottom row values
+        //another way to think of it is each splitter adds the incoming value to the left and right
+        //probably should look up binary tree calculations and this would be easier lol
+
         var lines = input.Split(Environment.NewLine);
         var length = lines[0].Length;
         var grid = new long[lines.Length][];
@@ -105,6 +106,3 @@ internal class DaySeven : Problem
         return grid[^1].Sum().ToString();
     }
 }
-
-internal record QuantumBeam(int Col, int Strength);
-
