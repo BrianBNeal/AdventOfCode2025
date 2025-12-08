@@ -4,9 +4,6 @@ namespace AdventOfCode2025;
 
 internal class DaySeven : Problem
 {
-    /// <summary>
-    /// fresh ID ranges (inclusive), blank line, available IDs
-    /// </summary>
     private readonly string input;
     internal DaySeven(bool IsTest = false)
     {

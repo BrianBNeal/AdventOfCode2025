@@ -4,9 +4,6 @@ namespace AdventOfCode2025;
 
 internal class DayEight : Problem
 {
-    /// <summary>
-    /// fresh ID ranges (inclusive), blank line, available IDs
-    /// </summary>
     private readonly string input;
     internal DayEight(bool IsTest = false)
     {
@@ -32,4 +29,3 @@ internal class DayEight : Problem
         return "NOT IMPLEMENTED";
     }
 }
-
