@@ -15,7 +15,7 @@ internal class DayOne : Problem
     {
         Title = IsTest ? "Day 1 Test" : "Day 1 Actual";
         var rawPath = "./Inputs/DayOne.txt";
-        var filePath = File.Exists(rawPath) ? rawPath : "./Inputs/DayTEMPLATE.txt";
+        var filePath = File.Exists(rawPath) ? rawPath : "./Inputs/TEMPLATE.txt";
         moves = IsTest
             ? [.. """
 			  L68

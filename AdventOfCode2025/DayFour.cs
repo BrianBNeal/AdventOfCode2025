@@ -10,7 +10,7 @@ internal class DayFour : Problem
     {
         Title = IsTest ? "Day 4 Test" : "Day 4 Actual";
         var rawPath = "./Inputs/DayFour.txt";
-        var filePath = File.Exists(rawPath) ? rawPath : "./Inputs/DayTEMPLATE.txt";
+        var filePath = File.Exists(rawPath) ? rawPath : "./Inputs/TEMPLATE.txt";
         positions = IsTest
             ? [.. """
             ..@@.@@@@.

@@ -2,16 +2,16 @@
 
 namespace AdventOfCode2025;
 
-internal class TEMPLATE : Problem
+internal class DayEight : Problem
 {
     /// <summary>
     /// fresh ID ranges (inclusive), blank line, available IDs
     /// </summary>
     private readonly string input;
-    internal TEMPLATE(bool IsTest = false)
+    internal DayEight(bool IsTest = false)
     {
-        Title = IsTest ? "Day TEMPLATE Test" : "Day TEMPLATE Actual";
-        var rawPath = "./Inputs/DayTEMPLATE.txt";
+        Title = IsTest ? "Day 8 Test" : "Day 8 Actual";
+        var rawPath = "./Inputs/DayEight.txt";
         var filePath = File.Exists(rawPath) ? rawPath : "./Inputs/TEMPLATE.txt";
         input = IsTest
             ? """

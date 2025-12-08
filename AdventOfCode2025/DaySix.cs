@@ -12,7 +12,7 @@ internal class DaySix : Problem
     {
         Title = IsTest ? "Day 6 Test" : "Day 6 Actual";
         var rawPath = "./Inputs/DaySix.txt";
-        var filePath = File.Exists(rawPath) ? rawPath : "./Inputs/DayTEMPLATE.txt";
+        var filePath = File.Exists(rawPath) ? rawPath : "./Inputs/TEMPLATE.txt";
         input = IsTest
             ? """
             123 328  51 64 
