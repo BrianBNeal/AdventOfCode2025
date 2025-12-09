@@ -211,7 +211,7 @@ internal static class DayEightExtensions {
 			str.Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries)
 				.Select(line => {
 					var parts = line.Split(',');
-					return new JunctionBox(int.Parse(parts[0]), int.Parse(parts[1]), int.Parse(parts[2]));
+					return new JunctionBox(double.Parse(parts[0]), double.Parse(parts[1]), double.Parse(parts[2]));
 				}).ToList();
 	}
 
